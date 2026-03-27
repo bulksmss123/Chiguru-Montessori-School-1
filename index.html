@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chiguru Montessori | Nurturing Young Minds</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefaf5;
+      color: #2c2b28;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Header & Nav */
+    header {
+      background: #ffffffea;
+      backdrop-filter: blur(6px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      border-bottom: 1px solid #f0e4d4;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 18px 0;
+    }
+
+    .logo h1 {
+      font-size: 1.9rem;
+      letter-spacing: -0.5px;
+      color: #5e3c2c;
+    }
+    .logo p {
+      font-size: 0.8rem;
+      color: #b87a5a;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #4e3b32;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: #c17b4c;
+    }
+
+    /* mobile menu */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: #5e3c2c;
+      cursor: pointer;
+    }
+
+    /* hero section */
+    .hero {
+      background: linear-gradient(105deg, #fff3ea 0%, #fde9dd 100%);
+      padding: 70px 0 80px;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-content h2 {
+      font-size: 3.2rem;
+      color: #3e2a21;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero-content .highlight {
+      color: #c17b4c;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #5f4c3e;
+      margin-bottom: 28px;
+      max-width: 500px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .btn-primary, .btn-outline {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+    .btn-primary {
+      background: #c17b4c;
+      color: white;
+      box-shadow: 0 4px 10px rgba(193,123,76,0.3);
+    }
+    .btn-primary:hover {
+      background: #a86236;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      border: 2px solid #c17b4c;
+      color: #c17b4c;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: #c17b4c10;
+      transform: translateY(-2px);
+    }
+    .hero-img {
+      flex: 1;
+      text-align: center;
+    }
+    .hero-img i {
+      font-size: 14rem;
+      color: #e9c9b2;
+      filter: drop-shadow(8px 12px 18px rgba(0,0,0,0.05));
+    }
+
+    /* sections general */
+    section {
+      padding: 70px 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.4rem;
+      color: #3e2a21;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: #c17b4c;
+      margin: 12px auto 0;
+      border-radius: 4px;
+    }
+
+    /* about & features */
+    .about-grid {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .about-text {
+      flex: 1.2;
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+      color: #4a3a30;
+    }
+    .feature-list {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 28px;
+      padding: 24px 20px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.03);
+      text-align: center;
+      flex: 1 1 160px;
+      transition: 0.2s;
+      border: 1px solid #f3e5db;
+    }
+    .feature-card i {
+      font-size: 2.4rem;
+      color: #c17b4c;
+      margin-bottom: 15px;
+    }
+    .feature-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* contact section */
+    .contact-wrapper {
+      background: #ffffff;
+      border-radius: 48px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
+      padding: 40px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .contact-details {
+      flex: 1;
+    }
+    .contact-details h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .contact-info-item i {
+      width: 48px;
+      height: 48px;
+      background: #f9ede4;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #c17b4c;
+    }
+    .contact-info-item p, .contact-info-item a {
+      font-size: 1rem;
+      color: #2c2b28;
+      text-decoration: none;
+    }
+    .contact-map {
+      flex: 1;
+      background: #faf1e9;
+      border-radius: 28px;
+      padding: 20px;
+      min-height: 260px;
+    }
+    .address-block {
+      background: #fdf7f2;
+      padding: 18px;
+      border-radius: 24px;
+      margin-top: 20px;
+    }
+    hr {
+      margin: 32px 0;
+      border: none;
+      height: 1px;
+      background: #e8d9ce;
+    }
+
+    /* legal pages (privacy, terms) */
+    .legal-content {
+      background: white;
+      border-radius: 32px;
+      padding: 40px 48px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.03);
+    }
+    .legal-content h2 {
+      font-family: 'Playfair Display', serif;
+      margin: 28px 0 16px;
+      color: #5e3c2c;
+    }
+    .legal-content h2:first-of-type {
+      margin-top: 0;
+    }
+    .legal-content p, .legal-content li {
+      color: #3f3a36;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    .legal-content ul {
+      padding-left: 28px;
+      margin: 16px 0;
+    }
+
+    footer {
+      background: #2d241f;
+      color: #e4d9d2;
+      padding: 48px 0 24px;
+      border-top-left-radius: 32px;
+      border-top-right-radius: 32px;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 18px;
+      color: #f0cfb6;
+    }
+    .footer-col p, .footer-col a {
+      color: #cdbcb0;
+      text-decoration: none;
+      line-height: 1.6;
+    }
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #443a33;
+      padding-top: 28px;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 0 10px;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .hero-content h2 {
+        font-size: 2.4rem;
+      }
+      .hero-img i {
+        font-size: 8rem;
+      }
+      .container {
+        padding: 0 24px;
+      }
+      .legal-content {
+        padding: 28px 20px;
+      }
+      .contact-wrapper {
+        padding: 28px 20px;
+      }
+    }
+    button, a {
+      cursor: pointer;
+    }
+    .active-nav {
+      color: #c17b4c !important;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-container">
+      <div class="logo">
+        <h1>Chiguru Montessori</h1>
+        <p>nurture • explore • grow</p>
+      </div>
+      <button class="menu-toggle" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" data-page="home">Home</a></li>
+        <li><a href="#" data-page="contact">Contact</a></li>
+        <li><a href="#" data-page="privacy">Privacy Policy</a></li>
+        <li><a href="#" data-page="terms">Terms & Conditions</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="app-root">
+    <!-- dynamic content injected here -->
+    <div id="page-content"></div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Chiguru Montessori</h4>
+          <p>Where every child blossoms with curiosity, creativity, and confidence.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <p><a href="#" data-page="home">Home</a></p>
+          <p><a href="#" data-page="contact">Contact Us</a></p>
+          <p><a href="#" data-page="privacy">Privacy Policy</a></p>
+          <p><a href="#" data-page="terms">Terms & Conditions</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Reach Us</h4>
+          <p><i class="fas fa-phone-alt" style="margin-right: 8px;"></i> 9741311531</p>
+          <p><i class="fas fa-envelope"></i> sowmyasonu645@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Shrinivasa Krupa, Kaverinagar, Mandya</p>
+        </div>
+      </div>
+      <div class="copyright">
+        © <span id="currentYear"></span> Chiguru Montessori School. All rights reserved. | Designed with care for little learners.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- PAGE DATA ----------
+    const pages = {
+      home: `
+        <section class="hero">
+          <div class="container hero-grid">
+            <div class="hero-content">
+              <h2>Where little minds <span class="highlight">blossom</span> into bright futures</h2>
+              <p>Montessori education that nurtures independence, creativity, and a lifelong love for learning.</p>
+              <div class="btn-group">
+                <a href="#" data-page="contact" class="btn-primary">Visit Us</a>
+                <a href="#" data-page="contact" class="btn-outline">Get in touch</a>
+              </div>
+            </div>
+            <div class="hero-img">
+              <i class="fas fa-seedling"></i>
+            </div>
+          </div>
+        </section>
+        
+        <section>
+          <div class="container">
+            <h2 class="section-title">Our Philosophy</h2>
+            <div class="about-grid">
+              <div class="about-text">
+                <p>At Chiguru Montessori, we believe every child is naturally curious and capable. Our prepared environment encourages self-directed learning, hands-on exploration, and respect for each child's unique rhythm.</p>
+                <p>We blend authentic Montessori principles with warmth and community, creating a safe, joyful space for children aged 2.5 to 6 years to develop socially, emotionally, and academically.</p>
+              </div>
+              <div class="feature-list">
+                <div class="feature-card"><i class="fas fa-hands-helping"></i><h4>Hands-on Learning</h4><p>Montessori materials</p></div>
+                <div class="feature-card"><i class="fas fa-child"></i><h4>Child-Centric</h4><p>Individual pace</p></div>
+                <div class="feature-card"><i class="fas fa-tree"></i><h4>Nature Inspired</h4><p>Outdoor exploration</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section style="background: #fff7f2;">
+          <div class="container">
+            <h2 class="section-title">Why Chiguru?</h2>
+            <div class="about-grid" style="gap: 35px;">
+              <div class="feature-card" style="background: white;"><i class="fas fa-chalkboard-user"></i><h4>Certified Guides</h4><p>Passionate Montessori trained educators</p></div>
+              <div class="feature-card" style="background: white;"><i class="fas fa-puzzle-piece"></i><h4>Holistic Development</h4><p>Practical life, sensorial, language & math</p></div>
+              <div class="feature-card" style="background: white;"><i class="fas fa-hand-sparkles"></i><h4>Safe & Caring</h4><p>Secure, hygienic, and loving environment</p></div>
+            </div>
+          </div>
+        </section>
+      `,
+      contact: `
+        <section>
+          <div class="container">
+            <h2 class="section-title">Reach Out to Us</h2>
+            <div class="contact-wrapper">
+              <div class="contact-details">
+                <h3>Let’s begin the journey</h3>
+                <p style="margin-bottom: 24px;">We’d love to welcome you for a tour, answer your questions, and share how Chiguru Montessori inspires young learners.</p>
+                <div class="contact-info-item"><i class="fas fa-phone-alt"></i> <p><strong>Phone:</strong> 9741311531</p></div>
+                <div class="contact-info-item"><i class="fas fa-envelope"></i> <p><strong>Email:</strong> sowmyasonu645@gmail.com</p></div>
+                <div class="contact-info-item"><i class="fas fa-map-pin"></i> <div><strong>Address:</strong><br> Shrinivasa Krupa Kaverinagara, 695, 1st cross, Kaveri Nagar Road, Dwaraka Nagar, Karasawadi, Mandya, Karnataka 571401</div></div>
+                <div class="address-block">
+                  <i class="fas fa-clock"></i> <strong>School Hours:</strong> Mon-Fri 9:00 AM – 3:30 PM | Saturday by appointment
+                </div>
+              </div>
+              <div class="contact-map">
+                <i class="fas fa-map-marked-alt" style="font-size: 2rem; color:#c17b4c; margin-bottom: 12px; display: inline-block;"></i>
+                <h4>Find us here</h4>
+                <p>695, 1st cross, Kaveri Nagar Road,<br> Dwaraka Nagar, Karasawadi, Mandya - 571401</p>
+                <div style="margin-top: 20px; background:#e9dbd0; border-radius: 20px; padding: 12px; font-size:0.9rem;">
+                  <i class="fas fa-location-dot"></i> <strong>Landmark:</strong> Near Kaverinagar Circle, Mandya
+                </div>
+                <p style="margin-top: 24px;"><i class="fas fa-globe"></i> We are located in a serene, child-friendly neighborhood.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      `,
+      privacy: `
+        <section>
+          <div class="container">
+            <div class="legal-content">
+              <h1 style="font-family: 'Playfair Display'; margin-bottom: 8px;">Privacy Policy</h1>
+              <p style="margin-bottom: 24px;"><strong>Last updated:</strong> March 2026</p>
+              <p>Chiguru Montessori School ("we", "our", "us") respects your privacy. This policy describes how we collect, use, and protect personal information provided by parents, guardians, and visitors through our website or physical enrollment.</p>
+              <h2>1. Information We Collect</h2>
+              <p>We may collect personal details such as child's name, parent/guardian contact information, email address (sowmyasonu645@gmail.com), phone number (9741311531), address, and emergency contacts during enrollment or inquiries.</p>
+              <h2>2. How We Use Information</h2>
+              <p>We use data to communicate about admissions, share school updates, ensure child safety, process enrollment, and improve our programs. We do not sell or rent personal data to third parties.</p>
+              <h2>3. Data Security</h2>
+              <p>We implement appropriate technical and organizational measures to secure your information. Access is restricted to authorized staff only.</p>
+              <h2>4. Cookies & Website</h2>
+              <p>Our website uses essential cookies to enhance functionality. No third-party tracking for advertising is employed.</p>
+              <h2>5. Contact Us</h2>
+              <p>For any privacy-related questions, reach us at 9741311531 or email sowmyasonu645@gmail.com.</p>
+            </div>
+          </div>
+        </section>
+      `,
+      terms: `
+        <section>
+          <div class="container">
+            <div class="legal-content">
+              <h1 style="font-family: 'Playfair Display';">Terms & Conditions</h1>
+              <p><strong>Effective Date:</strong> March 2026</p>
+              <p>Welcome to Chiguru Montessori School website. By accessing or using our website, you agree to comply with these Terms & Conditions.</p>
+              <h2>1. Use of Site</h2>
+              <p>The content on this site is for general information about our Montessori programs. We reserve the right to modify or discontinue any aspect without notice.</p>
+              <h2>2. Enrollment & Policies</h2>
+              <p>Admissions are subject to availability and fulfillment of required documentation. Parents must adhere to school policies provided during registration.</p>
+              <h2>3. Intellectual Property</h2>
+              <p>All logos, text, and graphics are property of Chiguru Montessori School. Unauthorized reproduction is prohibited.</p>
+              <h2>4. Limitation of Liability</h2>
+              <p>We shall not be liable for any indirect damages arising from the use of this website. For specific concerns, please contact the school directly.</p>
+              <h2>5. Governing Law</h2>
+              <p>These terms shall be governed by the laws of Karnataka, India. Any disputes will be subject to the jurisdiction of Mandya courts.</p>
+              <h2>6. Contact</h2>
+              <p>If you have any questions about these Terms, please contact us at 9741311531 or sowmyasonu645@gmail.com</p>
+            </div>
+          </div>
+        </section>
+      `
+    };
+
+    // Active page state
+    let currentPage = 'home';
+
+    function renderPage(pageId) {
+      const contentDiv = document.getElementById('page-content');
+      if (pages[pageId]) {
+        contentDiv.innerHTML = pages[pageId];
+        currentPage = pageId;
+        // update active class in navigation
+        document.querySelectorAll('.nav-links a, footer a[data-page]').forEach(link => {
+          if (link.getAttribute('data-page') === pageId) {
+            link.classList.add('active-nav');
+          } else {
+            link.classList.remove('active-nav');
+          }
+        });
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // also set page title hint
+        document.title = `Chiguru Montessori | ${pageId === 'home' ? 'Home' : pageId === 'contact' ? 'Contact' : pageId === 'privacy' ? 'Privacy' : 'Terms'}`;
+      } else {
+        contentDiv.innerHTML = pages['home'];
+        currentPage = 'home';
+      }
+      // close mobile menu after click
+      const navMenu = document.getElementById('navLinks');
+      if (navMenu.classList.contains('show')) navMenu.classList.remove('show');
+    }
+
+    // event delegation for dynamic links
+    function bindNavigation() {
+      // handle both header and footer dynamic clicks
+      document.addEventListener('click', (e) => {
+        let target = e.target.closest('[data-page]');
+        if (target && target.getAttribute('data-page')) {
+          e.preventDefault();
+          const page = target.getAttribute('data-page');
+          if (pages[page]) renderPage(page);
+        }
+      });
+    }
+
+    // mobile menu toggle
+    function initMobileMenu() {
+      const toggleBtn = document.getElementById('mobileMenuBtn');
+      const navLinks = document.getElementById('navLinks');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          navLinks.classList.toggle('show');
+        });
+      }
+    }
+
+    // set current year in footer
+    function setCopyrightYear() {
+      const yearSpan = document.getElementById('currentYear');
+      if (yearSpan) yearSpan.innerText = new Date().getFullYear();
+    }
+
+    // initial load
+    function init() {
+      setCopyrightYear();
+      bindNavigation();
+      initMobileMenu();
+      renderPage('home'); // default home
+    }
+
+    init();
+  </script>
+</body>
+</html>
